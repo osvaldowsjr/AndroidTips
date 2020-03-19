@@ -1,0 +1,11 @@
+To save states on android app:
+  - Android may destroy your activity if:
+    - Not enough memory
+    - Rotate screen
+    - Turning off the screen for a long time
+  - To avoid that you can use:
+    override fun onSaveInstanceState
+      -> Use the outState bundle to save information that you want to persist with your state
+    override fun onRestoreInstanceState
+      -> savedInstanceState would work as the same bundle as outState bundle of onSaveInstaceState
+      
