@@ -9,3 +9,44 @@ To save states on android app:
     override fun onRestoreInstanceState
       -> savedInstanceState would work as the same bundle as outState bundle of onSaveInstaceState
       
+==========================================================================================================================================
+
+Generic Listener
+  -If you've buttons that have similar actions, you can create a generic listener and re-utilize it
+    -val listener = View.OnClickListener {
+            val b = it as Button
+            newNumber.append(b.text)
+        }
+        button0.setOnClickListener(listener)
+
+===========================================================================================================================================
+
+Lateinit and lazy initializers
+  - Lateinit allows the compiler to recognize that the value of non-null property isn't stored in the constructor stage 
+    - However, to use the lateinit modifier, we must use it as var, it may cause problems as it might be changed during the execution of the code
+  - by lazy modfier is useful to implement a read-only property with lazy-initialization
+    - performs it initilizer where the defined property is first used, not its declaration
+	- Can be treated differently according to its mode 
+		- SYNCHRONIZED 
+			- The initialization will only be exectued on the first thread that is called
+			- Other threads will then refer to the value cached
+			- Default Mode
+		- PUBLICATION
+			- It can be called from mutilple thread at the same time, and initialization can be done simustaneously on all or part of the threads
+			- However, if it was already initialized, it will be returned without doing a initialization
+		- NONE
+			- Unsafe, no consideration for multi-threads
+			= Simply initilizes it at first access or returns the stored value
+			
+===========================================================================================================================================
+
+Guidelines
+	- It is possible to create a guideline on the blueprint view to anchor your layout using constraint layout
+	- It has vertical (Horizontal align) and horizontal (Vertical align)
+	- Useful for positioning widgets on a certain percentage of the screen
+
+===========================================================================================================================================
+
+Baseline constraint
+	- Using the baseline constraint you can align the up and the bottom of a widget to another using only one constraint
+	- It will align texts of a button for example
