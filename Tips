@@ -50,3 +50,25 @@ Guidelines
 Baseline constraint
 	- Using the baseline constraint you can align the up and the bottom of a widget to another using only one constraint
 	- It will align texts of a button for example
+
+===========================================================================================================================================
+
+Coroutines
+	- Threads vs Coroutines
+		- Threads allows us to do some task outside the main thread, however, you might end up with a bunch of hidden callbacks and might be not
+		able to update the UI easily
+		- Coroutines makes our code shorter and easier to deal with the UI thread
+	-Dispatchers
+		- Dispatchers specifies where the coroutines should run
+			- Dispatchers.Main
+				- Use this to run a coroutine on the main thread of android
+				- Should be only used to update UI and performing quick work
+			- Dispatchers.IO
+				- Dispatchers optimized to make disk or network I/O outside the main thread
+				- API requests, downloads, search for a file inside android
+			- Dispatchers.Default
+				- Optimized to run CPU-intensive work outside the main thread
+	- CoroutineScope
+		- To call a suspend function (Functions that uses coroutines), we need to have a CoroutineScope
+		- CoroutineScope are simply a way to start and terminate our coroutines 
+		- Is responsable of avoiding memory leaks by terminating the coroutine when a user leaves a content area within our app
