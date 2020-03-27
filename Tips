@@ -8,6 +8,7 @@ To save states on android app:
       -> Use the outState bundle to save information that you want to persist with your state
     override fun onRestoreInstanceState
       -> savedInstanceState would work as the same bundle as outState bundle of onSaveInstaceState
+      -> We can also use the onCreate Bundle to perform the same action
       
 ==========================================================================================================================================
 
