@@ -73,3 +73,46 @@ Coroutines
 		- To call a suspend function (Functions that uses coroutines), we need to have a CoroutineScope
 		- CoroutineScope are simply a way to start and terminate our coroutines 
 		- Is responsable of avoiding memory leaks by terminating the coroutine when a user leaves a content area within our app
+
+===========================================================================================================================================
+
+ListView/RecyclerView
+	- Adapter
+		- ListView
+			- To create a custom adapter for our ListView, we must extend the arrayAdapter
+			- We must use the constructor of array adapter
+			- To use this adapter, you must inflate the XML
+				- LayoutInflater.from(context)
+					- Context is used to set a series of information to our inflater, like the size of the screen
+			- Override basically 2 methods
+				- GetCount
+					- Basically must return the size of our list, to control the sidebar as an example
+				- getView
+					- Where we set the information on each item that is going to be shown
+					- It is important to use the convertView
+						- If there is a view that can be reutilized by android, the system will flag it on convertView
+						- Basically we must check if it's null -> if the convertView is null we are going to create a new view, else we are going to asign our view to the convertView
+						- if(convertView == null){
+							view = inflater.inflate(...)
+						}else view = convertView
+			- ViewHolder pattern
+				- Remove the findViewByID
+					- Can reuse it's reference to spare memory and time within our app
+				- We need to create a ViewHolder instance everytime a new view is created
+					- However if we use the convertView to reuse our views, the ViewHolder instance can also be reused
+				- Access the widgets through ViewHolder
+				- Use the property tag of the view to store its ViewHolder (Android framework won't use this tag attribute, so we can be sure that only our viewHolder gonna be there)
+					-view.tag = viewHolder
+					-viewHolder = view.tag as ViewHolder
+		-RecyclerView
+			- Basically the same implementation of the ListView with ViewHolder pattern
+
+===========================================================================================================================================
+
+Automatic imports
+	-Settings
+		-Editor
+			-General
+				-Auto Import
+					- Insert imports on Paste (choose all from the dropdown)
+					- Check "Add unambiguos imports on the fly" and "Optimize imports on the fly"
